@@ -1,0 +1,316 @@
+/*
+ * SSS EDS — styles.css
+ * Selective Service System brand styles
+ */
+
+/* ============================================================
+   Custom Properties
+   ============================================================ */
+:root {
+  /* Brand colors */
+  --color-navy: #0e1d33;
+  --color-blue: #005ea2;
+  --color-red: #c1000c;
+  --color-white: #ffffff;
+  --color-gray: #565c65;
+  --color-light-gray: #f0f0f0;
+
+  /* Font families */
+  --body-font-family: 'Source Sans 3', 'Source Sans Pro', Arial, sans-serif;
+  --heading-font-family: 'Merriweather', Georgia, serif;
+  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+
+  /* Font sizes — body */
+  --body-font-size-m: 1.125rem;
+  --body-font-size-s: 1rem;
+  --body-font-size-xs: 0.875rem;
+
+  /* Font sizes — headings */
+  --heading-font-size-xxl: 2.5rem;
+  --heading-font-size-xl: 2rem;
+  --heading-font-size-l: 1.75rem;
+  --heading-font-size-m: 1.5rem;
+  --heading-font-size-s: 1.25rem;
+  --heading-font-size-xs: 1.125rem;
+
+  /* Layout */
+  --nav-height: 72px;
+  --max-width: 1200px;
+  --section-padding: 2rem 1.5rem;
+}
+
+/* ============================================================
+   Reset / Base
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  color: var(--color-navy);
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-white);
+  display: none; /* hidden until decorated */
+}
+
+body.appear {
+  display: block;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 0.75em;
+  color: var(--color-navy);
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+h1 { font-size: var(--heading-font-size-xxl); }
+h2 { font-size: var(--heading-font-size-xl); }
+h3 { font-size: var(--heading-font-size-l); }
+h4 { font-size: var(--heading-font-size-m); }
+h5 { font-size: var(--heading-font-size-s); }
+h6 { font-size: var(--heading-font-size-xs); }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Links
+   ============================================================ */
+a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Images
+   ============================================================ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   Main / Page layout
+   ============================================================ */
+main {
+  display: block;
+}
+
+main .section {
+  padding: var(--section-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+main .section > div {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Full-width sections override the centering */
+main .section.full-width {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+main .section.full-width > div {
+  max-width: 100%;
+}
+
+/* Dark section variant */
+main .section.dark {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  max-width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--color-white);
+}
+
+main .section.dark a {
+  color: #7eb5e5;
+}
+
+/* Light-gray section variant */
+main .section.light {
+  background-color: var(--color-light-gray);
+  max-width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+a.button,
+button {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+a.button.primary,
+button.primary {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border-color: var(--color-blue);
+}
+
+a.button.primary:hover,
+button.primary:hover {
+  background-color: #003d75;
+  border-color: #003d75;
+  text-decoration: none;
+}
+
+a.button.secondary,
+button.secondary {
+  background-color: transparent;
+  color: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+a.button.secondary:hover,
+button.secondary:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+/* ============================================================
+   Lists
+   ============================================================ */
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.375rem;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Tables
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: var(--body-font-size-s);
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-light-gray);
+}
+
+th {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--heading-font-family);
+}
+
+tr:nth-child(even) td {
+  background-color: var(--color-light-gray);
+}
+
+/* ============================================================
+   Header / Nav placeholder (block will override)
+   ============================================================ */
+header {
+  height: var(--nav-height);
+}
+
+/* ============================================================
+   Footer placeholder (block will override)
+   ============================================================ */
+footer {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
+}
+
+/* ============================================================
+   Block skeleton / loading states
+   ============================================================ */
+main .block[data-block-status='loading'],
+main .block[data-block-status='initialized'] {
+  visibility: hidden;
+}
+
+/* ============================================================
+   Responsive — tablet / desktop
+   ============================================================ */
+@media (min-width: 600px) {
+  :root {
+    --body-font-size-m: 1.125rem;
+    --section-padding: 2.5rem 2rem;
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --nav-height: 72px;
+    --section-padding: 3rem 2rem;
+    --heading-font-size-xxl: 3rem;
+    --heading-font-size-xl: 2.25rem;
+    --heading-font-size-l: 1.875rem;
+  }
+
+  main .section {
+    padding: var(--section-padding);
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --section-padding: 3.5rem 2rem;
+  }
+}

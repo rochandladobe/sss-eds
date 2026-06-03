@@ -1,0 +1,342 @@
+/* =============================================================================
+   SSS Hero Block
+   Dark navy (#0e1d33) background, white text, Merriweather headings
+   Background image positioned right half; content left-aligned
+   ============================================================================= */
+
+.hero {
+  width: 100%;
+  display: block;
+}
+
+.hero-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.hero__inner {
+  position: relative;
+  min-height: 480px;
+  background-color: #0e1d33;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background image — right half of the hero */
+.hero__bg-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  background-image: var(--hero-bg, none);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Dark overlay on background image for readability */
+.hero__bg-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(14, 29, 51, 0.7) 0%,
+    rgba(14, 29, 51, 0.2) 60%,
+    rgba(14, 29, 51, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+/* Left-side gradient that blends content area into the image */
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(14, 29, 51, 1) 0%,
+    rgba(14, 29, 51, 1) 50%,
+    rgba(14, 29, 51, 0.85) 75%,
+    rgba(14, 29, 51, 0) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* No background image: just a simple dark navy fill */
+.hero__inner:not([style]) .hero__overlay {
+  display: none;
+}
+
+/* Content box */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 4rem 3rem 4rem 2rem;
+  margin-left: 0;
+  /* Center vertically if inner is flex */
+}
+
+/* Max-width wrapper matching site layout */
+.hero__inner::after {
+  content: none;
+}
+
+/* Constrain content using a wrapper approach */
+@supports (display: grid) {
+  .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 600px) 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .hero__bg-image {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 100%;
+  }
+
+  .hero__overlay {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 60%;
+  }
+
+  .hero__content {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 4rem 2rem 4rem 3rem;
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Heading */
+.hero__heading {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  font-size: 2.625rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+/* Strong red accent on first word or element — optional author-side styling */
+.hero__heading strong,
+.hero__heading b {
+  color: #c1000c;
+}
+
+/* Body text */
+.hero__text {
+  font-family: 'Source Sans 3', 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: #ccd8e6;
+  margin: 0 0 1.75rem 0;
+  max-width: 520px;
+}
+
+.hero__text p {
+  margin: 0 0 0.75rem 0;
+}
+
+.hero__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* CTA button — red, square corners, government style */
+.hero__cta {
+  display: inline-block;
+  background-color: #c1000c;
+  color: #ffffff;
+  font-family: 'Source Sans 3', 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: background-color 0.2s;
+  border: 2px solid transparent;
+}
+
+.hero__cta:hover {
+  background-color: #9b000a;
+  color: #ffffff;
+}
+
+.hero__cta:focus {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  background-color: #9b000a;
+}
+
+/* =============================================================================
+   Variants via section class or block modifier
+   ============================================================================= */
+
+/* Light variant */
+.hero.hero--light .hero__inner,
+.section.light .hero__inner {
+  background-color: #f5f6f7;
+}
+
+.hero.hero--light .hero__heading,
+.section.light .hero__heading {
+  color: #0e1d33;
+}
+
+.hero.hero--light .hero__text,
+.section.light .hero__text {
+  color: #3d4551;
+}
+
+.hero.hero--light .hero__overlay,
+.section.light .hero__overlay {
+  background: linear-gradient(
+    to right,
+    rgba(245, 246, 247, 1) 0%,
+    rgba(245, 246, 247, 0.95) 50%,
+    rgba(245, 246, 247, 0.8) 75%,
+    rgba(245, 246, 247, 0) 100%
+  );
+}
+
+/* Compact variant */
+.hero.hero--compact .hero__inner,
+.section.compact .hero .hero__inner {
+  min-height: 280px;
+}
+
+.hero.hero--compact .hero__heading,
+.section.compact .hero .hero__heading {
+  font-size: 1.875rem;
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+  .hero__heading {
+    font-size: 2.125rem;
+  }
+
+  .hero__content {
+    padding: 3rem 2rem 3rem 2rem;
+  }
+
+  @supports (display: grid) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__bg-image {
+      width: 100%;
+    }
+
+    .hero__overlay {
+      width: 70%;
+    }
+
+    .hero__content {
+      grid-column: 1;
+      padding: 3rem 2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__inner {
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .hero__bg-image::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 29, 51, 0.8) 0%,
+      rgba(14, 29, 51, 0.65) 100%
+    );
+  }
+
+  .hero__overlay {
+    width: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 29, 51, 0.85) 0%,
+      rgba(14, 29, 51, 0.6) 100%
+    );
+  }
+
+  .hero__content {
+    padding: 2.5rem 1.5rem;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @supports (display: grid) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__bg-image {
+      position: absolute;
+      grid-row: auto;
+    }
+
+    .hero__content {
+      grid-column: 1;
+      padding: 2.5rem 1.5rem;
+    }
+  }
+
+  .hero__heading {
+    font-size: 1.75rem;
+  }
+
+  .hero__text {
+    font-size: 1rem;
+  }
+
+  .hero__cta {
+    padding: 12px 24px;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__inner {
+    min-height: 300px;
+  }
+
+  .hero__heading {
+    font-size: 1.5rem;
+  }
+
+  .hero__content {
+    padding: 2rem 1.25rem;
+  }
+}

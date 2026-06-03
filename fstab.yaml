@@ -1,0 +1,4 @@
+mountpoints:
+  /:
+    url: https://adobe.sharepoint.com/:f:/r/sites/sss-eds/Shared%20Documents/sss-eds
+    type: markup

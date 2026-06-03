@@ -1,0 +1,302 @@
+/* =============================================================================
+   SSS Cards Block
+   Two-column grid, icon + title + description + link arrow
+   Light (#f0f0f0) default background; dark navy variant for dark sections
+   ============================================================================= */
+
+/* =============================================================================
+   Cards list grid
+   ============================================================================= */
+
+.cards__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* =============================================================================
+   Individual card
+   ============================================================================= */
+
+.cards__item {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  border: 1px solid #dcdee0;
+  padding: 1.75rem;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+}
+
+.cards__item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Icon alignment */
+.cards__icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.cards__icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Card body */
+.cards__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Card title */
+.cards__title {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0e1d33;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+/* Description */
+.cards__desc {
+  font-family: 'Source Sans 3', 'Source Sans Pro', Arial, sans-serif;
+  font-size: 0.9375rem;
+  color: #3d4551;
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.cards__desc p {
+  margin: 0 0 0.625rem 0;
+}
+
+.cards__desc p:last-child {
+  margin-bottom: 0;
+}
+
+/* Link with arrow */
+.cards__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Source Sans 3', 'Source Sans Pro', Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #005ea2;
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  transition: color 0.15s, gap 0.15s;
+  align-self: flex-start;
+}
+
+.cards__link:hover,
+.cards__link:focus {
+  color: #004888;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  gap: 8px;
+  outline: 2px solid #005ea2;
+  outline-offset: 2px;
+}
+
+.cards__link-arrow {
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.cards__link:hover .cards__link-arrow {
+  transform: translateX(3px);
+}
+
+/* =============================================================================
+   Icon-left horizontal layout (optional, via "cards icon-left" block name)
+   ============================================================================= */
+
+.cards.icon-left .cards__item {
+  flex-direction: row;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.cards.icon-left .cards__icon {
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+/* =============================================================================
+   Dark section variant
+   Applied when the parent .section has class "dark" (via section-metadata)
+   ============================================================================= */
+
+.section.dark .cards__item,
+.section.dark-bg .cards__item,
+.cards.dark .cards__item {
+  background-color: #0e1d33;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.section.dark .cards__title,
+.section.dark-bg .cards__title,
+.cards.dark .cards__title {
+  color: #ffffff;
+}
+
+.section.dark .cards__desc,
+.section.dark-bg .cards__desc,
+.cards.dark .cards__desc {
+  color: #b8c8d8;
+}
+
+.section.dark .cards__link,
+.section.dark-bg .cards__link,
+.cards.dark .cards__link {
+  color: #73b3e7;
+}
+
+.section.dark .cards__link:hover,
+.section.dark-bg .cards__link:hover,
+.cards.dark .cards__link:hover {
+  color: #a8cfef;
+}
+
+.section.dark .cards__item:hover,
+.section.dark-bg .cards__item:hover,
+.cards.dark .cards__item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* =============================================================================
+   Navy variant (explicit dark navy bg)
+   ============================================================================= */
+
+.section.navy .cards__item,
+.cards.navy .cards__item {
+  background-color: #162231;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.section.navy .cards__title,
+.cards.navy .cards__title {
+  color: #ffffff;
+}
+
+.section.navy .cards__desc,
+.cards.navy .cards__desc {
+  color: #c8d8e8;
+}
+
+.section.navy .cards__link,
+.cards.navy .cards__link {
+  color: #73b3e7;
+}
+
+/* =============================================================================
+   3-column variant (via block option "cards (3-up)")
+   ============================================================================= */
+
+.cards.three-up .cards__list,
+.cards.cards-3-up .cards__list {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* =============================================================================
+   4-column variant
+   ============================================================================= */
+
+.cards.four-up .cards__list,
+.cards.cards-4-up .cards__list {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.cards.four-up .cards__item,
+.cards.cards-4-up .cards__item {
+  padding: 1.375rem;
+}
+
+.cards.four-up .cards__title,
+.cards.cards-4-up .cards__title {
+  font-size: 1rem;
+}
+
+/* =============================================================================
+   Borderless / clean variant
+   ============================================================================= */
+
+.cards.borderless .cards__item {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.cards.borderless .cards__item:hover {
+  background-color: #f0f0f0;
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+  .cards.three-up .cards__list,
+  .cards.cards-3-up .cards__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards.four-up .cards__list,
+  .cards.cards-4-up .cards__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cards__list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cards.three-up .cards__list,
+  .cards.cards-3-up .cards__list,
+  .cards.four-up .cards__list,
+  .cards.cards-4-up .cards__list {
+    grid-template-columns: 1fr;
+  }
+
+  .cards__item {
+    padding: 1.375rem;
+  }
+
+  .cards.icon-left .cards__item {
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards__item {
+    padding: 1.25rem 1rem;
+  }
+
+  .cards__title {
+    font-size: 1rem;
+  }
+
+  .cards__desc {
+    font-size: 0.875rem;
+  }
+}
