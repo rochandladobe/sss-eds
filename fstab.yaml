@@ -1,4 +1,4 @@
 mountpoints:
   /:
-    url: https://adobe.sharepoint.com/:f:/r/sites/sss-eds/Shared%20Documents/sss-eds
+    url: https://adobe-my.sharepoint.com/personal/rochandl_adobe_com/Documents/SSS-EDS
     type: markup
