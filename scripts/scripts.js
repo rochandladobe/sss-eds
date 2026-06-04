@@ -7,13 +7,12 @@ import {
   buildBlock,
   loadHeader,
   loadFooter,
-  loadBlocks,
+  loadSections,
   loadBlock,
   loadCSS,
   getMetadata,
   sampleRUM,
   setup,
-  decorateButtons,
   decorateIcons,
   decorateSections,
   decorateBlocks,
@@ -57,7 +56,6 @@ function buildAutoBlocks(main) {
  * @param {Element} main The main element
  */
 export function decorateMain(main) {
-  decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
@@ -70,7 +68,7 @@ export function decorateMain(main) {
  */
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
-  await loadBlocks(main);
+  await loadSections(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
